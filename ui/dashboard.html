@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trade Engine Dashboard</title>
+</head>
+<body>
+    <h1>Trade Engine Dashboard</h1>
+    <div>
+        <h2>Performance</h2>
+        <p id="performance">Loading...</p>
+    </div>
+    <div>
+        <h2>Orders</h2>
+        <ul id="orders">Loading...</ul>
+    </div>
+    <script>
+        async function fetchData() {
+            try {
+                const perfResponse = await fetch('/api/performance');
+                const perf = await perfResponse.json();
+                document.getElementById('performance').innerText =
+                    `Profit: ${perf.profit}, Loss: ${perf.loss}, Net: ${perf.net}`;
+                
+                const ordersResponse = await fetch('/api/orders');
+                const orders = await ordersResponse.json();
+                let ordersHtml = "";
+                orders.forEach(order => {
+                    ordersHtml += `<li>${JSON.stringify(order)}</li>`;
+                });
+                document.getElementById('orders').innerHTML = ordersHtml;
+            } catch (error) {
+                console.error("Error fetching data", error);
+            }
+        }
+        setInterval(fetchData, 10000);
+        fetchData();
+    </script>
+</body>
+</html>
