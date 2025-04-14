@@ -4,11 +4,11 @@ from fastapi.responses import HTMLResponse
 
 router = APIRouter()
 
-@router.get("/", response_class=HTMLResponse)
-def dashboard():
-    dashboard_path = os.path.join(os.path.dirname(__file__), "..", "ui", "dashboard.html")
-    with open(dashboard_path, "r") as f:
-        return f.read()
+# @router.get("/", response_class=HTMLResponse)
+# def dashboard():
+#     dashboard_path = os.path.join(os.path.dirname(__file__), "..", "ui", "dashboard.html")
+#     with open(dashboard_path, "r") as f:
+#         return f.read()
 
 @router.get("/api/performance")
 def get_performance():
