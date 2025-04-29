@@ -8,11 +8,11 @@ from config import ACCESS_TOKEN
 live_candles = []
 
 def process_candle_data(message):
-    """
-    Process incoming WebSocket message containing candle data.
-    Expected message format (JSON): 
-        {"time": "YYYY-MM-DD HH:MM:SS", "open": ..., "high": ..., "low": ..., "close": ...}
-    """
+    
+    # Process incoming WebSocket message containing candle data.
+    # Expected message format (JSON): 
+    #     {"time": "YYYY-MM-DD HH:MM:SS", "open": ..., "high": ..., "low": ..., "close": ...}
+    
     try:
         # If message is string, parse it as JSON
         data = message if isinstance(message, dict) else json.loads(message)
@@ -31,10 +31,10 @@ def process_candle_data(message):
         print("Error processing candle data:", e)
 
 async def listen_live_data_ws(access_token, subscribe_data):
-    """
-    Async function that connects to the Fyers WebSocket,
-    subscribes to live data, and processes incoming messages.
-    """
+    
+    # Async function that connects to the Fyers WebSocket,
+    # subscribes to live data, and processes incoming messages.
+    
     import websockets
     websocket_url = "wss://api.fyers.in/socket/v2/data"  # Adjust per Fyers documentation
     async with websockets.connect(
@@ -52,10 +52,10 @@ async def listen_live_data_ws(access_token, subscribe_data):
                 break
 
 def live_data_stream_ws():
-    """
-    Starts the live data stream via WebSocket. This function runs an asyncio loop
-    to listen for incoming candle data from the Fyers WebSocket endpoint.
-    """
+    
+    # Starts the live data stream via WebSocket. This function runs an asyncio loop
+    # to listen for incoming candle data from the Fyers WebSocket endpoint.
+    
     subscribe_message = {
         "symbols": ["NSE:SBIN"],  # Example symbol; adjust as needed
         "dataType": "candles",    # Specify the type of data you expect

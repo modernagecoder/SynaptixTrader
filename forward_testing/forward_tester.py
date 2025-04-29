@@ -8,20 +8,20 @@ from app.config import ACCESS_TOKEN, SYMBOL, RISK_MANAGEMENT_THRESHOLD
 
 class ForwardTester:
     def __init__(self, strategy, update_callback=None):
-        """
-        :param strategy: An instance of a strategy that has a generate_signals method.
-        :param update_callback: Optional callback to report performance updates.
-        """
+        
+        # :param strategy: An instance of a strategy that has a generate_signals method.
+        # :param update_callback: Optional callback to report performance updates.
+        
         self.strategy = strategy
         self.update_callback = update_callback
         self.orders = []
         self.performance = {"profit": 0, "loss": 0, "net": 0}
 
     def run(self):
-        """
-        Runs the forward testing loop: processes live data, generates signals,
-        applies risk management, and simulates orders.
-        """
+        
+        # Runs the forward testing loop: processes live data, generates signals,
+        # applies risk management, and simulates orders.
+        
         while True:
             try:
                 # Ensure a sufficient batch of live candle data is available (e.g., 15 minutes)

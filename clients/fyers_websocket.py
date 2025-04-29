@@ -4,10 +4,10 @@ import json
 import websockets
 
 async def listen_to_market_data(access_token, subscribe_data):
-    """
-    Connects to the Fyers WebSocket endpoint, subscribes to market data,
-    and continuously prints received data.
-    """
+    
+    # Connects to the Fyers WebSocket endpoint, subscribes to market data,
+    # and continuously prints received data.
+    
     websocket_url = "wss://api.fyers.in/socket/v2/data"  # Adjust according to Fyers documentation
     async with websockets.connect(
         websocket_url,

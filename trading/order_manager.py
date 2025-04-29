@@ -3,10 +3,10 @@ import requests
 from config import LIVE_TRADING, ACCESS_TOKEN
 
 def place_order(access_token, symbol, trade_type, quantity):
-    """
-    Place an order. When LIVE_TRADING is False, the order is simulated.
-    When LIVE_TRADING is True, a real order is sent via the Fyers API.
-    """
+    
+    # Place an order. When LIVE_TRADING is False, the order is simulated.
+    # When LIVE_TRADING is True, a real order is sent via the Fyers API.
+    
     if not LIVE_TRADING:
         simulated_order = {
             "symbol": symbol,
